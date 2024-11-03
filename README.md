@@ -8,6 +8,7 @@ En este curso se abordan los conceptos básicos y las buenas prácticas para el 
 * Natalia Edith Mejia Bautista
 ### Contacto 
 nmejia30@ciencias.unam.mx
+natalia.mejbau@gmail.com
 
 ## Instructor 
 * Daniel Barajas González. 
