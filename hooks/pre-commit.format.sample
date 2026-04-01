@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# pre-commit: comprobaciones de formato sin dependencias externas (espacios en blanco).
+# Copia o enlaza este archivo como .git/hooks/pre-commit (o combínalo con otros scripts).
+#
+# Qué hace:
+#   - git diff --cached --check  → falla si hay errores de espacio en blanco en el diff staged
+#     (líneas con solo espacios, falta de newline al final del archivo, etc.).
+#
+# Opcional: descomenta una de las secciones siguientes si tu proyecto ya tiene la herramienta.
+
+set -euo pipefail
+
+if ! git diff --cached --check; then
+  echo "pre-commit (formato): corrige los problemas de espacios en blanco indicados arriba." >&2
+  exit 1
+fi
+
+# --- Ejemplos opcionales (ajusta rutas y asegúrate de que la herramienta esté en PATH) ---
+
+# JavaScript / TypeScript (Prettier): solo archivos staged
+# FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(js|jsx|ts|tsx|json|md)$' || true)
+# if [[ -n "${FILES}" ]]; then
+#   echo "${FILES}" | xargs npx --no prettier --check || exit 1
+# fi
+
+# Python (Black)
+# FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.py$' || true)
+# if [[ -n "${FILES}" ]]; then
+#   echo "${FILES}" | xargs black --check || exit 1
+# fi
+
+# Go
+# FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.go$' || true)
+# if [[ -n "${FILES}" ]]; then
+#   echo "${FILES}" | xargs gofmt -l | grep -q . && { echo "gofmt: hay archivos sin formatear"; exit 1; }
+# fi
+
+exit 0

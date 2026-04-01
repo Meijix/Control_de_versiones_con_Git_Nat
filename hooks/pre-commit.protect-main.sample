@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# pre-commit: evita commits directos en la rama principal (main / master).
+#
+# Uso típico: equipos que integran solo vía pull request y quieren que nadie commitee
+# por error en main desde la máquina local.
+#
+# Excepción de emergencia: ALLOW_MAIN_COMMIT=1 git commit ...
+# (documenta en tu README del equipo cuándo está permitido).
+
+set -euo pipefail
+
+if [[ "${ALLOW_MAIN_COMMIT:-}" == "1" ]]; then
+  exit 0
+fi
+
+branch="$(git symbolic-ref --short HEAD 2>/dev/null || true)"
+if [[ -z "${branch}" ]]; then
+  exit 0
+fi
+
+case "${branch}" in
+  main|master)
+    echo "pre-commit: commits directos a '${branch}' están deshabilitados." >&2
+    echo "Crea una rama (git switch -c feature/...) o usa ALLOW_MAIN_COMMIT=1 solo si tu política lo permite." >&2
+    exit 1
+    ;;
+esac
+
+exit 0

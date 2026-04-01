@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# commit-msg: valida la primera línea del mensaje según Conventional Commits.
+# Debe instalarse como .git/hooks/commit-msg (no es pre-commit).
+#
+# Referencia: https://www.conventionalcommits.org/
+#
+# Formas aceptadas en la primera línea (ejemplos):
+#   feat: añadir login
+#   fix(api): corregir timeout
+#   chore!: cambio que rompe compatibilidad (breaking change en tipo)
+#   feat(ui)!: otra forma de breaking change antes de los dos puntos
+#
+# Se omiten validaciones para mensajes de merge y revert estándar de Git.
+
+set -euo pipefail
+
+msg_file="${1:?Uso: commit-msg <fichero-mensaje>}"
+first_line="$(head -n 1 "${msg_file}")"
+
+# Commits de merge / revert generados por Git
+if [[ "${first_line}" =~ ^Merge[[:space:]] ]]; then
+  exit 0
+fi
+if [[ "${first_line}" =~ ^Revert[[:space:]] ]]; then
+  exit 0
+fi
+
+# Tipos habituales + scope opcional + ! opcional (breaking) + : + descripción no vacía
+# No valida cuerpo ni pies de página; solo la cabecera.
+pattern='^(revert|feat|fix|docs|style|refactor|perf|test|chore|ci|build)(\([^)]+\))?(!)?: .+'
+
+if [[ "${first_line}" =~ ${pattern} ]]; then
+  exit 0
+fi
+
+echo "commit-msg: la primera línea debe seguir Conventional Commits." >&2
+echo "Ejemplo: feat: descripción breve   o   fix(scope): descripción" >&2
+echo "Línea recibida: ${first_line}" >&2
+exit 1

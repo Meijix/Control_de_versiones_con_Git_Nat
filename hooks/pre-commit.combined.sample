@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# pre-commit combinado: formato (espacios en blanco) + protección de main.
+# install.sh copia este archivo a .git/hooks/pre-commit; los pasos siguientes invocan los
+# .sample versionados en la carpeta hooks/ del repositorio (no en .git/hooks).
+#
+# Para Conventional Commits usa además commit-msg.conventional-commits.sample → .git/hooks/commit-msg
+
+set -euo pipefail
+
+ROOT="$(git rev-parse --show-toplevel 2>/dev/null)" || {
+  echo "pre-commit.combined: no se pudo resolver la raíz del repositorio." >&2
+  exit 1
+}
+HOOKS_SRC="${ROOT}/hooks"
+
+bash "${HOOKS_SRC}/pre-commit.format.sample" || exit $?
+bash "${HOOKS_SRC}/pre-commit.protect-main.sample" || exit $?
