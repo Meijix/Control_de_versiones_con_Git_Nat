@@ -73,6 +73,9 @@ Buenas prácticas: commits pequeños, mensajes en imperativo y descriptivos; usa
 - Consulta la [hoja de referencia rápida](cheat-sheet.md) para tener los comandos a mano.
 - Para ejemplos de buenos y malos mensajes de commit, revisa [`buenas-practicas-commits.md`](buenas-practicas-commits.md).
 - Si te encuentras con errores comunes de Git, consulta la [guía de solución de problemas](troubleshooting.md).
+- Revisa el [glosario de términos](glosario.md) si algún concepto no te queda claro.
+- ¿No sabes qué comando usar? Consulta el [mapa de decisión de comandos](mapa-de-comandos.md).
+- Configura [aliases útiles](aliases.md) para agilizar tu trabajo diario.
 
 ---
 
