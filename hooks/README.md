@@ -8,6 +8,8 @@ Esta carpeta contiene **ejemplos listos para copiar** a `.git/hooks/` en tus pro
 | Evitar commits directos a `main` / `master` | [`pre-commit.protect-main.sample`](pre-commit.protect-main.sample) | `pre-commit` |
 | Mensajes [Conventional Commits](https://www.conventionalcommits.org/) | [`commit-msg.conventional-commits.sample`](commit-msg.conventional-commits.sample) | **`commit-msg`** (no es `pre-commit`) |
 | Combinar formato + protección de rama principal | [`pre-commit.combined.sample`](pre-commit.combined.sample) | `pre-commit` |
+| Ejecutar pruebas antes de push | [`pre-push.run-tests.sample`](pre-push.run-tests.sample) | `pre-push` |
+| Auto-insertar ticket/issue en el mensaje | [`prepare-commit-msg.ticket.sample`](prepare-commit-msg.ticket.sample) | `prepare-commit-msg` |
 
 ## Por qué `commit-msg` y no `pre-commit` para el mensaje
 
@@ -56,6 +58,18 @@ Copia manual: renombra el `.sample` a `pre-commit` o `commit-msg`, colócalo en 
 - Acepta **scope** opcional y **`!`** para cambios que rompen compatibilidad (`feat!: ...`, `fix(api)!: ...`).
 - **Omite** la validación en líneas que empiezan por `Merge ` o `Revert ` (commits generados por Git).
 
+### Pruebas antes del push (`pre-push.run-tests.sample`)
+
+- Se ejecuta **antes** de enviar datos al remoto; recibe el nombre del remoto y la URL como argumentos.
+- Incluye secciones comentadas para **Node.js** (`npm test`), **Python** (`pytest`), **Go** (`go test`) y **Make** (`make test`).
+- Descomenta la sección de tu stack y el hook cancelará el push si las pruebas fallan.
+
+### Ticket automático (`prepare-commit-msg.ticket.sample`)
+
+- Extrae un identificador tipo `PROJ-123` del nombre de la rama (e.g., `feature/PROJ-123-login`).
+- Antepone `[PROJ-123] ` al mensaje de commit si no está ya presente.
+- Omite merges, squashes y amends para no alterar mensajes generados por Git.
+
 ## Combinar varios `pre-commit`
 
 Git solo ejecuta **un** script `pre-commit`. [`pre-commit.combined.sample`](pre-commit.combined.sample) llama a `pre-commit.format.sample` y `pre-commit.protect-main.sample` en la carpeta **`hooks/` en la raíz del repo** (no dentro de `.git`). Tras `git clone`, mantén esa carpeta en el proyecto; el hook instalado en `.git/hooks/pre-commit` depende de ella.
@@ -68,6 +82,12 @@ Si prefieres un único fichero **autocontenido** en `.git/hooks/` (por ejemplo p
 
 - Versionar esta carpeta `hooks/` en el repo y documentar `bash hooks/install.sh` en el README del proyecto.
 - O `git config core.hooksPath hooks` apuntando a una carpeta **dentro** del repositorio (por ejemplo `hooks/activos/`), de modo que todos usen los mismos scripts tras un `git pull`.
+
+## Compatibilidad con Windows
+
+- Los scripts requieren **bash**. En Windows, [Git for Windows](https://gitforwindows.org/) incluye **Git Bash** que los ejecuta sin cambios.
+- `chmod +x` se maneja automáticamente por Git en Windows; si es necesario: `git update-index --chmod=+x <hook>`.
+- `sed -i.bak` funciona tanto en macOS como en Git Bash para Windows; se elimina el `.bak` tras la edición.
 
 ## Referencias
 

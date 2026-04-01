@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# pre-push: ejecuta pruebas antes de enviar commits al remoto.
+# Instalar como .git/hooks/pre-push (o mediante hooks/install.sh).
+#
+# Git invoca este hook con dos argumentos: <nombre-remoto> <url>
+# y pasa por stdin las referencias que se van a enviar.
+#
+# Si el script sale con código != 0, el push se cancela.
+
+set -euo pipefail
+
+# --- Descomenta la sección de tu stack ---
+
+# Node.js
+# if [[ -f "package.json" ]]; then
+#   npm test || { echo "pre-push: las pruebas de Node.js fallaron." >&2; exit 1; }
+# fi
+
+# Python
+# if [[ -f "pytest.ini" ]] || [[ -f "setup.py" ]] || [[ -f "pyproject.toml" ]]; then
+#   python -m pytest || { echo "pre-push: pytest falló." >&2; exit 1; }
+# fi
+
+# Go
+# if [[ -f "go.mod" ]]; then
+#   go test ./... || { echo "pre-push: go test falló." >&2; exit 1; }
+# fi
+
+# Make
+# if [[ -f "Makefile" ]] && grep -q '^test:' Makefile; then
+#   make test || { echo "pre-push: make test falló." >&2; exit 1; }
+# fi
+
+echo "pre-push: sin pruebas configuradas (descomenta la sección de tu stack en el hook)." >&2
+exit 0

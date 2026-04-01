@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 # Instala en el repositorio actual (directorio .git del cwd) los hooks de ejemplo.
 # Uso:
-#   bash hooks/install.sh              # pre-commit combinado + commit-msg Conventional Commits
-#   bash hooks/install.sh format-only  # solo revisión de espacios (--check)
-#   bash hooks/install.sh protect-only # solo bloqueo de commits a main/master
+#   bash hooks/install.sh              # pre-commit combinado + commit-msg + pre-push + prepare-commit-msg
+#   bash hooks/install.sh format-only   # solo revisión de espacios (--check)
+#   bash hooks/install.sh protect-only  # solo bloqueo de commits a main/master
+#   bash hooks/install.sh pre-push-only # solo ejecución de pruebas antes de push
+#   bash hooks/install.sh ticket-only   # solo auto-inserción de ticket en mensajes
 #
 # Ejecutar desde la raíz del repositorio clonado.
 
@@ -34,6 +36,12 @@ case "${mode}" in
     cp "${SCRIPT_DIR}/commit-msg.conventional-commits.sample" "${HOOKS}/commit-msg"
     chmod +x "${HOOKS}/commit-msg"
     echo "Instalado: ${HOOKS}/commit-msg  (Conventional Commits)"
+    cp "${SCRIPT_DIR}/pre-push.run-tests.sample" "${HOOKS}/pre-push"
+    chmod +x "${HOOKS}/pre-push"
+    echo "Instalado: ${HOOKS}/pre-push  (ejecutar pruebas antes de push)"
+    cp "${SCRIPT_DIR}/prepare-commit-msg.ticket.sample" "${HOOKS}/prepare-commit-msg"
+    chmod +x "${HOOKS}/prepare-commit-msg"
+    echo "Instalado: ${HOOKS}/prepare-commit-msg  (ticket desde nombre de rama)"
     ;;
   format-only)
     install_pre_commit "${SCRIPT_DIR}/pre-commit.format.sample"
@@ -41,8 +49,18 @@ case "${mode}" in
   protect-only)
     install_pre_commit "${SCRIPT_DIR}/pre-commit.protect-main.sample"
     ;;
+  pre-push-only)
+    cp "${SCRIPT_DIR}/pre-push.run-tests.sample" "${HOOKS}/pre-push"
+    chmod +x "${HOOKS}/pre-push"
+    echo "Instalado: ${HOOKS}/pre-push  (ejecutar pruebas antes de push)"
+    ;;
+  ticket-only)
+    cp "${SCRIPT_DIR}/prepare-commit-msg.ticket.sample" "${HOOKS}/prepare-commit-msg"
+    chmod +x "${HOOKS}/prepare-commit-msg"
+    echo "Instalado: ${HOOKS}/prepare-commit-msg  (ticket desde nombre de rama)"
+    ;;
   *)
-    echo "Uso: bash hooks/install.sh [all|format-only|protect-only]" >&2
+    echo "Uso: bash hooks/install.sh [all|format-only|protect-only|pre-push-only|ticket-only]" >&2
     exit 1
     ;;
 esac

@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# prepare-commit-msg: antepone el número de ticket/issue extraído del nombre de la rama.
+#
+# Si la rama se llama "feature/PROJ-123-descripcion", el hook añade "[PROJ-123] "
+# al inicio del mensaje de commit (si no está ya presente).
+#
+# Instalar como .git/hooks/prepare-commit-msg.
+# Git pasa: $1 = fichero del mensaje, $2 = tipo (message|template|merge|squash|commit), $3 = SHA (si amend)
+
+set -euo pipefail
+
+COMMIT_MSG_FILE="${1:?}"
+COMMIT_SOURCE="${2:-}"
+
+# No modificar merges, squashes o amends
+case "${COMMIT_SOURCE}" in
+  merge|squash|commit) exit 0 ;;
+esac
+
+branch="$(git symbolic-ref --short HEAD 2>/dev/null || true)"
+# Extraer ticket con patrón LETRAS-NÚMEROS (e.g., PROJ-123, JIRA-456)
+ticket="$(echo "${branch}" | grep -oE '[A-Z]+-[0-9]+' | head -1 || true)"
+
+if [[ -n "${ticket}" ]]; then
+  # Solo anteponer si no está ya en el mensaje
+  if ! grep -q "${ticket}" "${COMMIT_MSG_FILE}"; then
+    sed -i.bak "1s/^/[${ticket}] /" "${COMMIT_MSG_FILE}"
+    rm -f "${COMMIT_MSG_FILE}.bak"
+  fi
+fi
+
+exit 0
