@@ -13,6 +13,8 @@ Desarrolladores que ya usan `commit` y `merge` y quieren **reescribir commits lo
 - Git 2.23+ recomendado (`git switch` aparece en otros materiales; aquí usamos solo `rebase`).
 - Saber que **reescribir commits cambia los hashes** y no debe hacerse a ciegas en ramas compartidas sin acuerdo de equipo.
 
+> **Windows**: ejecuta los scripts en **Git Bash** (incluido con [Git for Windows](https://gitforwindows.org/)).
+
 ## Objetivos de aprendizaje
 
 Al terminar deberías poder:

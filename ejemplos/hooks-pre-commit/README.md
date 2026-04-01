@@ -13,6 +13,8 @@ Desarrolladores que quieren **automatizar comprobaciones locales** sin depender 
 - Permisos de ejecución en scripts (`chmod +x`).
 - Saber que `.git/hooks/` **no se versiona** por defecto; para compartir hooks entre el equipo existen `core.hooksPath`, herramientas como [pre-commit](https://pre-commit.com/) o copiar scripts en el repo e instalarlos con un script o tarea de build.
 
+> **Windows**: ejecuta los scripts en **Git Bash** (incluido con [Git for Windows](https://gitforwindows.org/)). Los comandos `grep`, `chmod` y rutas con `/` funcionan en Git Bash; PowerShell o CMD pueden dar errores.
+
 ## Objetivos de aprendizaje
 
 1. Ubicar e instalar un hook `pre-commit` en un repositorio.

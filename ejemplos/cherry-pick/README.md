@@ -13,6 +13,8 @@ Personas que ya distinguen **rama** y **commit**, y necesitan trasladar cambios 
 - Saber leer `git log --oneline` y copiar un hash de commit (`git rev-parse` / primeros caracteres del hash).
 - Entender que cherry-pick **crea commits nuevos** con distinto hash si el parche se aplica sobre otra base (mismo cambio, distinto SHA).
 
+> **Windows**: ejecuta los scripts en **Git Bash** (incluido con [Git for Windows](https://gitforwindows.org/)).
+
 ## Objetivos de aprendizaje
 
 1. Elegir el commit correcto (sobre todo si hay varios en la rama de origen).

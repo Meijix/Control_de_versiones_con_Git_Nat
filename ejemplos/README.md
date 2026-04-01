@@ -7,8 +7,14 @@ Esta carpeta contiene **demostraciones reproducibles** y **guías** para escenar
 | [`rebase-interactivo/`](rebase-interactivo/README.md) | Reordenar, fusionar o reescribir commits con `git rebase -i` |
 | [`cherry-pick/`](cherry-pick/README.md) | Traer commits concretos de otra rama sin fusionar toda la rama |
 | [`hooks-pre-commit/`](hooks-pre-commit/README.md) | Automatizar comprobaciones antes de cada commit (demo con marcadores de conflicto) |
+| [`merge-conflictos/`](merge-conflictos/README.md) | Crear, detectar y resolver conflictos de merge |
+| [`stash/`](stash/README.md) | Guardar trabajo temporal con `git stash` para cambiar de contexto |
+| [`reset/`](reset/README.md) | Diferencias entre `git reset --soft`, `--mixed` y `--hard` |
+| [`bisect/`](bisect/README.md) | Encontrar el commit que introdujo un error con `git bisect` |
+| [`reflog/`](reflog/README.md) | Recuperar commits perdidos con `git reflog` |
+| [`github-actions/`](github-actions/README.md) | Ejemplo básico de CI con GitHub Actions |
 
-En la raíz del repositorio, la carpeta [`hooks/`](../hooks/README.md) reúne **plantillas** adicionales: formato de código (`git diff --check` y ejemplos comentados), **Conventional Commits** (hook `commit-msg`) y bloqueo de commits a `main`.
+En la raíz del repositorio, la carpeta [`hooks/`](../hooks/README.md) reúne **plantillas** adicionales: formato de código, **Conventional Commits**, bloqueo de commits a `main`, **ejecución de pruebas antes de push** y **auto-inserción de ticket en mensajes de commit**.
 
 ## Cómo usar estos materiales
 
