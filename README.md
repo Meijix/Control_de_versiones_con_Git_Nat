@@ -1,10 +1,30 @@
 # Control de versiones con Git
 
+[![Licencia: CC BY 4.0](https://img.shields.io/badge/Licencia-CC%20BY%204.0-lightgrey.svg)](LICENSE)
+[![Git](https://img.shields.io/badge/Git-2.30%2B-f05032.svg?logo=git&logoColor=white)](https://git-scm.com/)
+[![Plataforma](https://img.shields.io/badge/Plataforma-macOS%20%7C%20Linux%20%7C%20Windows%20(Git%20Bash)-blue.svg)](https://gitforwindows.org/)
+
 En este curso se encuentran los recursos relacionados con la asignatura.
 
 ## Descripción
 
 Se abordan los conceptos básicos y las buenas prácticas para el control de versiones, así como el uso de Git para la gestión de un repositorio de código fuente.
+
+## Tabla de contenidos
+
+- [Configuración inicial](#configuración-inicial)
+- [Comandos del día a día](#comandos-del-día-a-día)
+- [Ramas](#ramas)
+- [Resolución de conflictos](#resolución-de-conflictos)
+- [Flujos de trabajo](#flujos-de-trabajo)
+  - [Git Flow](#git-flow)
+  - [Trunk-based development](#trunk-based-development)
+  - [GitHub Flow](#github-flow)
+  - [GitLab Flow](#gitlab-flow)
+  - [Flujo con bifurcación](#flujo-con-bifurcación-forking-workflow)
+  - [Flujo por rama de funcionalidad](#flujo-por-rama-de-funcionalidad-feature-branch-simplificado)
+- [Notas importantes](#notas-importantes-evitar-confusiones)
+- [Autor](#autor)
 
 ---
 
@@ -52,6 +72,7 @@ Buenas prácticas: commits pequeños, mensajes en imperativo y descriptivos; usa
 
 - Consulta la [hoja de referencia rápida](cheat-sheet.md) para tener los comandos a mano.
 - Para ejemplos de buenos y malos mensajes de commit, revisa [`buenas-practicas-commits.md`](buenas-practicas-commits.md).
+- Si te encuentras con errores comunes de Git, consulta la [guía de solución de problemas](troubleshooting.md).
 
 ---
 
@@ -165,6 +186,17 @@ Es la base de GitHub Flow y de muchos equipos sin formalizar Git Flow completo.
 
 `git diff` compara working tree vs staging; `git diff --staged` compara staging vs último commit.
 
+```
+  Working Tree          Staging (Index)        Repositorio (.git)
+ ┌──────────────┐      ┌──────────────┐       ┌──────────────┐
+ │  Archivos    │      │  Snapshot    │       │   Commits    │
+ │  en disco    │─────>│  preparado   │──────>│  (historial) │
+ │              │      │              │       │              │
+ └──────────────┘      └──────────────┘       └──────────────┘
+       git add ──────>       git commit ──────>
+       <────── git restore   <────── git reset
+```
+
 ### `fetch` vs `pull`
 
 - **`git fetch`**: trae commits del remoto y **actualiza referencias** (`origin/main`, etc.) **sin** fusionar en tu rama actual. Tu trabajo local no cambia hasta que hagas `merge` o `rebase`.
@@ -174,6 +206,20 @@ Es la base de GitHub Flow y de muchos equipos sin formalizar Git Flow completo.
 
 - **Merge**: crea un commit de fusión; **preserva** el contexto de “dos líneas de trabajo que se unen”. Historial puede mostrar más bifurcaciones.
 - **Rebase**: **reaplica** tus commits encima de otra base; historial más **lineal**, pero **reescribe** commits ya publicados si los rebases de nuevo (cambia hashes).
+
+```
+Merge (conserva bifurcación):
+
+    main:    A───B───C───M
+                  \     /
+    feature:       D───E
+
+Rebase (historial lineal):
+
+    main:    A───B───C
+                      \
+    feature:           D'──E'
+```
 
 Norma habitual: **no rebases commits que ya están en `main` compartido** sin coordinación; en ramas locales o antes del push está bien. Equipos suelen decidir: “merge en PR público” o “rebase + fast-forward”.
 

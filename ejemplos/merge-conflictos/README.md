@@ -30,6 +30,15 @@ En `main` existe un archivo `app.txt` con tres líneas base. Se crean dos ramas:
 
 Se fusiona primero `feature/header` en `main` (sin conflicto). Al intentar fusionar `feature/footer`, Git detecta que la línea 1 fue modificada en ambas ramas y genera un **conflicto** que debe resolverse manualmente.
 
+```
+                ┌── feature/header (modifica línea 1)
+    main: A ────┤
+                └── feature/footer (modifica línea 1)
+
+    Merge de header (OK):       main: A ── H
+    Merge de footer (CONFLICTO): ambos cambiaron la línea 1
+```
+
 ## Cómo ejecutar la demostración
 
 ```bash

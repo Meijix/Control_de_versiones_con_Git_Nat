@@ -25,6 +25,18 @@ Personas que ya distinguen **rama** y **commit**, y necesitan trasladar cambios 
 
 En `main` solo vive un README estable. En la rama `feature/login` hay dos commits: primero se añade `login.txt` básico; después otro commit añade la línea de sesión. Quieres llevar **solo** el primer commit a `main` (por ejemplo, desplegar la parte mínima del login sin el segundo cambio).
 
+```
+    main:           A (README)
+                     \
+    feature/login:    B (login.txt) ── C (sesión)
+
+    Después del cherry-pick de B:
+
+    main:           A ── B' (login.txt copiado)
+                     \
+    feature/login:    B ── C
+```
+
 ## Cómo ejecutar la demostración
 
 ```bash
