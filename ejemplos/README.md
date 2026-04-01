@@ -4,15 +4,19 @@ Esta carpeta contiene **demostraciones reproducibles** y **guías** para escenar
 
 | Carpeta | Tema |
 |---------|------|
-| [`rebase-interactivo/`](rebase-interactivo/README.md) | Reordenar, fusionar o reescribir commits con `git rebase -i` |
+| [`bisect/`](bisect/README.md) | Encontrar el commit que introdujo un error con `git bisect` |
+| [`blame/`](blame/README.md) | Identificar quién modificó cada línea de un archivo con `git blame` |
 | [`cherry-pick/`](cherry-pick/README.md) | Traer commits concretos de otra rama sin fusionar toda la rama |
+| [`diff-avanzado/`](diff-avanzado/README.md) | Comparar ramas, commits y cambios a nivel de palabra con `git diff` avanzado |
+| [`github-actions/`](github-actions/README.md) | Ejemplo básico de CI con GitHub Actions |
 | [`hooks-pre-commit/`](hooks-pre-commit/README.md) | Automatizar comprobaciones antes de cada commit (demo con marcadores de conflicto) |
 | [`merge-conflictos/`](merge-conflictos/README.md) | Crear, detectar y resolver conflictos de merge |
-| [`stash/`](stash/README.md) | Guardar trabajo temporal con `git stash` para cambiar de contexto |
-| [`reset/`](reset/README.md) | Diferencias entre `git reset --soft`, `--mixed` y `--hard` |
-| [`bisect/`](bisect/README.md) | Encontrar el commit que introdujo un error con `git bisect` |
+| [`rebase-interactivo/`](rebase-interactivo/README.md) | Reordenar, fusionar o reescribir commits con `git rebase -i` |
 | [`reflog/`](reflog/README.md) | Recuperar commits perdidos con `git reflog` |
-| [`github-actions/`](github-actions/README.md) | Ejemplo básico de CI con GitHub Actions |
+| [`reset/`](reset/README.md) | Diferencias entre `git reset --soft`, `--mixed` y `--hard` |
+| [`revert/`](revert/README.md) | Deshacer un commit de forma segura con `git revert` sin reescribir historial |
+| [`stash/`](stash/README.md) | Guardar trabajo temporal con `git stash` para cambiar de contexto |
+| [`tag/`](tag/README.md) | Crear y gestionar etiquetas ligeras y anotadas con `git tag` |
 
 En la raíz del repositorio, la carpeta [`hooks/`](../hooks/README.md) reúne **plantillas** adicionales: formato de código, **Conventional Commits**, bloqueo de commits a `main`, **ejecución de pruebas antes de push** y **auto-inserción de ticket en mensajes de commit**.
 

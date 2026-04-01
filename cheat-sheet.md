@@ -68,6 +68,7 @@
 | `git reset --mixed HEAD~1` | Deshace el ultimo commit; deja los cambios en el working tree |
 | `git reset --hard HEAD~1` | Deshace el ultimo commit y descarta todos los cambios (destructivo) |
 | `git revert <hash>` | Crea un commit nuevo que revierte los cambios del commit indicado |
+| `git revert -m 1 <hash>` | Revierte un commit de merge, conservando los cambios del padre indicado |
 | `git stash` | Guarda cambios sin commitear en una pila temporal |
 | `git stash pop` | Recupera el ultimo stash y lo elimina de la pila |
 | `git stash list` | Lista todos los stashes guardados |
@@ -84,8 +85,14 @@
 | `git log --since="2 weeks ago"` | Commits de las ultimas dos semanas |
 | `git log --author="nombre"` | Commits filtrados por autor |
 | `git log <rama1>..<rama2>` | Commits en `<rama2>` que no estan en `<rama1>` |
+| `git diff <rama1>..<rama2>` | Diferencias completas entre dos ramas (tip a tip) |
 | `git diff <rama1>...<rama2>` | Diferencias entre dos ramas desde su punto de divergencia |
+| `git diff --stat` | Resumen estadistico de cambios (archivos y lineas modificados) |
+| `git diff --word-diff` | Muestra diferencias a nivel de palabra en lugar de lineas completas |
+| `git diff --name-only` | Lista solo los nombres de archivos modificados |
+| `git diff --name-status` | Lista archivos modificados con su estado (A/M/D) |
 | `git blame <archivo>` | Muestra quien modifico cada linea de un archivo y en que commit |
+| `git blame -L <inicio>,<fin> <archivo>` | Muestra blame solo para un rango de lineas |
 | `git bisect start` | Inicia una busqueda binaria para encontrar el commit que introdujo un bug |
 | `git bisect good <hash>` | Marca un commit como bueno durante la biseccion |
 | `git bisect bad <hash>` | Marca un commit como malo durante la biseccion |
