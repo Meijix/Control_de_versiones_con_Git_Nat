@@ -1,0 +1,64 @@
+# =============================================================================
+# .gitattributes — Configuración de atributos por archivo para Git
+# =============================================================================
+# Coloca este archivo en la raíz del repositorio como ".gitattributes".
+# Más información: https://git-scm.com/docs/gitattributes
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Normalización automática de fin de línea
+# -----------------------------------------------------------------------------
+# Git almacena LF en el repositorio y convierte al fin de línea del SO
+# en el checkout. Esto evita diffs falsos por mezcla de LF y CRLF.
+* text=auto
+
+# -----------------------------------------------------------------------------
+# Forzar LF en scripts y configuración
+# -----------------------------------------------------------------------------
+# Estos archivos deben usar LF siempre, incluso en Windows, para que
+# funcionen correctamente en shells Unix.
+*.sh text eol=lf
+*.bash text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.md text eol=lf
+
+# -----------------------------------------------------------------------------
+# Forzar CRLF en archivos de Windows
+# -----------------------------------------------------------------------------
+# Scripts de lote de Windows requieren CRLF para ejecutarse correctamente.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# -----------------------------------------------------------------------------
+# Archivos binarios (no tocar ni mostrar diff)
+# -----------------------------------------------------------------------------
+# El atributo "binary" equivale a "-diff -merge -text": Git no intentará
+# normalizar fines de línea, fusionar contenido ni mostrar diffs de texto.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.tar.gz binary
+
+# -----------------------------------------------------------------------------
+# Lockfiles: evitar conflictos de merge
+# -----------------------------------------------------------------------------
+# Los lockfiles generados automáticamente producen conflictos enormes
+# e inútiles. Con merge=ours, Git conserva la versión local en caso
+# de conflicto.
+#
+# IMPORTANTE: requiere registrar el driver una vez por clon:
+#   git config merge.ours.driver true
+package-lock.json merge=ours
+yarn.lock merge=ours
+
+# -----------------------------------------------------------------------------
+# Diff semántico para Markdown
+# -----------------------------------------------------------------------------
+# Git usa los encabezados (#, ##, etc.) como contexto en los hunks del diff,
+# facilitando la lectura de cambios en documentación.
+*.md diff=markdown
