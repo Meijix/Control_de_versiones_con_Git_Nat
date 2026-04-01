@@ -1,9 +1,10 @@
 # Makefile para ejecutar las demostraciones de Git
 # Uso: make demos | make clean | make demo-<nombre> | make help
 
-DEMO_DIRS := bisect blame cherry-pick diff-avanzado flujo-completo \
-             hooks-pre-commit log-avanzado merge-conflictos \
-             rebase-interactivo reflog reset revert stash tag worktree
+DEMO_DIRS := 01-stash 02-diff-avanzado 03-log-avanzado 04-merge-conflictos \
+             05-blame 06-reset 07-revert 08-reflog 09-cherry-pick \
+             10-rebase-interactivo 11-bisect 12-tag 13-worktree \
+             14-hooks-pre-commit 17-flujo-completo
 
 .PHONY: demos all-demos clean help $(addprefix demo-,$(DEMO_DIRS))
 
