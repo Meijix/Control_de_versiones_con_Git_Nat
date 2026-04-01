@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Hook pre-commit de ejemplo: bloquea el commit si hay marcadores de conflicto en el área de staging.
+# Instálalo con install-hook.sh dentro del repositorio de demostración.
+
+set -euo pipefail
+
+# Nota: --cached debe ir antes del patrón (ver git-grep(1)); si no, el hook no detecta nada.
+if git grep --cached -q -I '^<<<<<<<' 2>/dev/null; then
+  echo "pre-commit: se detectaron marcadores de conflicto (<<<<<<<) en archivos staged." >&2
+  echo "Resuelve el conflicto antes de commitear." >&2
+  exit 1
+fi
+
+# Ejemplo opcional: rechazar si aparece una cadena peligrosa en el diff staged (descomenta para probar)
+# if git diff --cached | grep -qi 'password\s*=\s*["'\''][^"'\'']\+["'\'']'; then
+#   echo "pre-commit: posible contraseña en texto plano en el diff." >&2
+#   exit 1
+# fi
+
+exit 0
