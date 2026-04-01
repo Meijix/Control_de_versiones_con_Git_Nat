@@ -50,6 +50,9 @@ Se abordan los conceptos básicos y las buenas prácticas para el control de ver
 
 Buenas prácticas: commits pequeños, mensajes en imperativo y descriptivos; usar `git status` antes de `commit` y `push`.
 
+- Consulta la [hoja de referencia rápida](cheat-sheet.md) para tener los comandos a mano.
+- Para ejemplos de buenos y malos mensajes de commit, revisa [`buenas-practicas-commits.md`](buenas-practicas-commits.md).
+
 ---
 
 ## Ramas
