@@ -1,0 +1,38 @@
+# Ejemplo de workflow básico para CI.
+# Copia este archivo a .github/workflows/ en tu repositorio.
+
+name: CI Básico
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      # --- Descomenta la sección de tu stack ---
+
+      # Node.js
+      # - name: Configurar Node.js
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: '20'
+      # - run: npm ci
+      # - run: npm test
+
+      # Python
+      # - name: Configurar Python
+      #   uses: actions/setup-python@v5
+      #   with:
+      #     python-version: '3.12'
+      # - run: pip install -r requirements.txt
+      # - run: pytest
+
+      - name: Verificación básica
+        run: echo "CI ejecutado correctamente"
