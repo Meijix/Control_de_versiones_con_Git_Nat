@@ -75,6 +75,11 @@ git log -1 --oneline    # debe mostrar el mensaje del commit cherry-pickeado
 ls login.txt            # debe existir con el contenido esperado
 ```
 
+## Ver también
+
+- [Rebase interactivo](../rebase-interactivo/README.md) — reordenar y fusionar commits.
+- [Merge con conflictos](../merge-conflictos/README.md) — resolver conflictos de fusión.
+
 ## Referencias
 
 - [git cherry-pick](https://git-scm.com/docs/git-cherry-pick)

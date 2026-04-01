@@ -77,6 +77,11 @@ git diff main..feature/mejoras --stat    # debe mostrar archivos modificados con
 git diff --staged                        # debe mostrar solo los cambios ya añadidos al índice
 ```
 
+## Ver también
+
+- [Blame](../blame/README.md) — rastrear quién cambió cada línea.
+- [Log avanzado](../log-avanzado/README.md) — filtrar y buscar en el historial.
+
 ## Referencias
 
 - [git diff](https://git-scm.com/docs/git-diff)

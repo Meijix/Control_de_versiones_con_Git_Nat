@@ -82,6 +82,12 @@ Cuando escribas una guía similar para tu equipo, incluye siempre:
 ## Referencias
 ```
 
+## Ver también
+
+- [Cherry-pick](../cherry-pick/README.md) — traer commits específicos de otra rama.
+- [Merge con conflictos](../merge-conflictos/README.md) — resolver conflictos de fusión.
+- [Reset](../reset/README.md) — mover HEAD a otro commit.
+
 ## Referencias
 
 - Documentación oficial: [git rebase](https://git-scm.com/docs/git-rebase)

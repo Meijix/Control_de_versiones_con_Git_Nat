@@ -87,6 +87,11 @@ grep "BUG:" app.txt     # confirma que el error está presente en ese commit
 git bisect reset         # vuelve al estado original
 ```
 
+## Ver también
+
+- [Blame](../blame/README.md) — rastrear quién cambió cada línea.
+- [Log avanzado](../log-avanzado/README.md) — filtrar y buscar en el historial.
+
 ## Referencias
 
 - [git bisect](https://git-scm.com/docs/git-bisect)

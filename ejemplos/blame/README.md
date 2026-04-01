@@ -74,6 +74,12 @@ git blame -L 2,4 config.txt   # solo líneas 2-4 del archivo
 git show <hash>                # detalle del commit señalado por blame
 ```
 
+## Ver también
+
+- [Bisect](../bisect/README.md) — encontrar el commit que introdujo un error.
+- [Log avanzado](../log-avanzado/README.md) — filtrar y buscar en el historial.
+- [Diff avanzado](../diff-avanzado/README.md) — comparar ramas y commits.
+
 ## Referencias
 
 - [git blame](https://git-scm.com/docs/git-blame)

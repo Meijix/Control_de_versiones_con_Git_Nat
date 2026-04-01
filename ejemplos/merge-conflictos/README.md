@@ -75,6 +75,12 @@ Además de la plantilla general (propósito, requisitos, pasos, verificación, f
 - **Documenta la política del equipo**: ¿se prefiere `--ours`, `--theirs`, o revisión manual? ¿Se usa `mergetool`?
 - **Indica cómo verificar** que el conflicto se resolvió correctamente: `git diff`, ejecutar tests, revisión de pares.
 
+## Ver también
+
+- [Rebase interactivo](../rebase-interactivo/README.md) — reordenar y limpiar commits.
+- [Cherry-pick](../cherry-pick/README.md) — traer commits específicos de otra rama.
+- [Revert](../revert/README.md) — deshacer un commit de forma segura.
+
 ## Referencias
 
 - [git merge](https://git-scm.com/docs/git-merge)

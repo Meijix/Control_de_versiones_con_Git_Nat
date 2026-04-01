@@ -71,6 +71,12 @@ git log --oneline          # debe mostrar el commit de reversión como el más r
 cat app.txt                # debe contener solo las líneas esperadas (sin el cambio revertido)
 ```
 
+## Ver también
+
+- [Reset](../reset/README.md) — mover HEAD con --soft, --mixed o --hard.
+- [Reflog](../reflog/README.md) — recuperar commits perdidos.
+- [Cherry-pick](../cherry-pick/README.md) — traer commits específicos de otra rama.
+
 ## Referencias
 
 - [git revert](https://git-scm.com/docs/git-revert)

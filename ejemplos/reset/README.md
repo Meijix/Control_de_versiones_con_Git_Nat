@@ -85,6 +85,12 @@ git status                 # debe mostrar el estado esperado (staged, unstaged o
 cat app.txt                # verificar el contenido del archivo
 ```
 
+## Ver también
+
+- [Reflog](../reflog/README.md) — recuperar commits perdidos tras un reset.
+- [Revert](../revert/README.md) — deshacer commits sin reescribir historial.
+- [Stash](../stash/README.md) — guardar cambios temporalmente.
+
 ## Referencias
 
 - [git reset](https://git-scm.com/docs/git-reset)

@@ -102,6 +102,10 @@ git show v1.0.0             # debe mostrar autor, fecha, mensaje y el commit aso
 git log --oneline --decorate # los commits etiquetados muestran (tag: vX.Y.Z)
 ```
 
+## Ver también
+
+- [Flujo completo](../flujo-completo/README.md) — tutorial end-to-end que incluye creación de tags.
+
 ## Referencias
 
 - [git tag](https://git-scm.com/docs/git-tag)

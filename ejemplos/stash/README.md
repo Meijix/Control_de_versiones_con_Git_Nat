@@ -65,6 +65,11 @@ Cuando documentes el uso de stash en tu equipo, incluye:
 3. **Limpieza periódica** — recordar que los stashes se acumulan; `git stash clear` elimina todos.
 4. **Alternativa** — si el trabajo en progreso es extenso, considerar un commit temporal (`git commit -m "WIP"`) que luego se puede deshacer con `git reset HEAD~1`.
 
+## Ver también
+
+- [Reset](../reset/README.md) — mover HEAD a otro commit.
+- [Worktree](../worktree/README.md) — trabajar en múltiples ramas simultáneamente.
+
 ## Referencias
 
 - [git stash](https://git-scm.com/docs/git-stash)

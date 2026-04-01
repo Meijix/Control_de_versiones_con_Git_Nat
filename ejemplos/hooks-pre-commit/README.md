@@ -84,6 +84,10 @@ O copia `pre-commit.sample` a `.git/hooks/pre-commit` y ejecuta `chmod +x .git/h
 | Falla en Windows con bash | Usa Git Bash o documenta hook en PowerShell equivalente. |
 | Demasiado lento | Mueve pruebas pesadas a `pre-push` o CI; deja en pre-commit solo chequeos rápidos. |
 
+## Ver también
+
+- [GitHub Actions](../github-actions/README.md) — automatización remota con CI/CD.
+
 ## Referencias
 
 - [Hooks personalizados](https://git-scm.com/book/es/v2/Personalizando-Git-Enlaces-de-Git)

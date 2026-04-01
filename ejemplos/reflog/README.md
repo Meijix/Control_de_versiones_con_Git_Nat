@@ -70,6 +70,11 @@ git reset --hard <hash>     # o: git branch rescate <hash>
 git log --oneline           # confirmar la recuperación
 ```
 
+## Ver también
+
+- [Reset](../reset/README.md) — mover HEAD con --soft, --mixed o --hard.
+- [Revert](../revert/README.md) — deshacer commits sin reescribir historial.
+
 ## Referencias
 
 - [git reflog](https://git-scm.com/docs/git-reflog)

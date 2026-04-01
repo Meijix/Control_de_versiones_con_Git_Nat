@@ -101,6 +101,10 @@ Si prefieres crear el workflow desde cero en tu repositorio:
 | Secrets | Las variables sensibles (tokens, claves API) se almacenan en **Settings > Secrets** del repositorio y se acceden con `${{ secrets.NOMBRE }}`. Nunca las escribas directamente en el YAML. |
 | `ubuntu-latest` | GitHub actualiza periódicamente la imagen; si necesitas reproducibilidad, fija la versión (e.g., `ubuntu-22.04`). |
 
+## Ver también
+
+- [Hooks pre-commit](../hooks-pre-commit/README.md) — validaciones locales antes de cada commit.
+
 ## Referencias
 
 - [Documentación oficial de GitHub Actions](https://docs.github.com/es/actions)
